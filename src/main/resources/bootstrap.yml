@@ -12,6 +12,10 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
+    #在eureka里面声明自己的网络信息:服务之间默认使用内网ID+端口号互相访问,要在所有的注册中心都要加上以下的代码,才会让eureka那边的服务是ip+端口号的形式
+  instance:
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    prefer-ip-address: true
 
 
 #服务的名称
